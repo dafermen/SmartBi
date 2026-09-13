@@ -209,10 +209,19 @@ Resultados de preparación de entrega del 2026-09-12:
 - Caché de assets comprobada en un año; HTML con revalidación.
 - `/release.json` coincide con la versión instalada. El listado de rollback
   funciona; no se simuló una reversión para no interrumpir la demo.
-- La primera ejecución pública pasó 17 de 18 recorridos: una recarga de Firefox
-  agotó su tiempo. Repetición específica con trazas: 3 de 3 aprobados.
-  Repetición completa posterior con trazas: 18 de 18 aprobados en el sitio HTTPS.
-  No se ha demostrado la causa exacta; se conserva como incidencia observada.
+- Pruebas públicas: se obtuvo una ejecución de 18/18 y una repetición específica
+  de Firefox de 3/3. Sin embargo, dos ejecuciones completas dieron 17/18 debido
+  a una espera intermitente al recargar documentación en Firefox. No se declara
+  esa comprobación como estable o resuelta.
+- Diagnóstico con trazas: la pantalla nueva aparece renderizada, los recursos
+  responden y un observador del evento `load` se ejecuta; aun así, Playwright
+  queda esperando la navegación. Cambiar el evento esperado o enfocar la pestaña
+  no resolvió de forma fiable el problema. Esos cambios experimentales se retiraron.
+- El comportamiento coincide con un
+  [reporte de Playwright para Firefox 1.61.1](https://github.com/microsoft/playwright/issues/42183),
+  pero no se ha demostrado que sea exactamente la misma causa. El siguiente paso
+  es validar recarga en Firefox manual y evaluar una actualización controlada del
+  controlador. La prueba original sigue activa; no se omite ni se fuerza su éxito.
 
 ## 6. Pendientes reales antes de publicar v0.1.0 formal
 
@@ -233,8 +242,8 @@ Resultados de preparación de entrega del 2026-09-12:
 4. Incorporar mutation testing y fuzzing sistemático de libros completos antes de un uso productivo serio.
 5. Incorporar una librería especializada de property-based testing si el proyecto supera el alcance demo.
 6. Evaluar la migración controlada a Vitest 5 para cerrar los avisos moderados exclusivos del entorno de pruebas.
-7. Vigilar si se reproduce el timeout aislado de recarga en Firefox antes de
-   atribuirlo al navegador, la red o la aplicación.
+7. Resolver o acotar la intermitencia del controlador de Firefox al recargar
+   documentación. No declarar una suite pública repetible hasta cerrar este punto.
 
 ## 7. Próximo paso recomendado
 

@@ -78,6 +78,10 @@ Formato basado en Keep a Changelog.
 
 ### Riesgo conocido de desarrollo
 
+- Recarga documental intermitente en la automatización de Firefox sobre HTTPS:
+  hay ejecuciones 18/18 y otras 17/18. La página se ve cargada en las trazas;
+  el caso original permanece activo y la causa exacta sigue en diagnóstico.
+
 - Vitest 4 conserva tres avisos moderados en herramientas de pruebas. npm propone Vitest 5 mediante `--force`; no se aplicó una actualización mayor automática. No afecta el bundle de producción y debe resolverse mediante una migración controlada.
 
 ### Pendiente antes de versión oficial

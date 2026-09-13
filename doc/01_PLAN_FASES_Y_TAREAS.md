@@ -260,7 +260,9 @@ Objetivo: convertir el MVP avanzado en una primera entrega formal.
 16. [x] Integrar las imágenes al lector y añadir pruebas de rutas e imágenes responsive.
 17. [x] Añadir comprobaciones sobre el build de producción, no solo desarrollo.
 18. [x] Registrar publicación demo, HTTPS y pruebas públicas en `CURRENT_STATUS.md`,
-    incluyendo la incidencia aislada de recarga observada en Firefox.
+    incluyendo la incidencia intermitente de recarga observada en Firefox.
+19. [ ] Validar manualmente la recarga en Firefox y resolver la intermitencia del
+    controlador antes de declarar estable la suite pública.
 
 Criterio de salida: aceptación firmada, validaciones verdes, limitaciones conocidas y versión etiquetada.
 
