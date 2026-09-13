@@ -1,0 +1,26 @@
+* text=auto
+
+# Bash debe conservar LF aunque el repositorio se trabaje desde Windows.
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.conf text eol=lf
+*.ps1 text eol=lf
+*.txt text eol=lf
+LICENSE text eol=lf
+
+# Estos formatos son binarios y Git no debe intentar normalizarlos.
+*.xlsx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary

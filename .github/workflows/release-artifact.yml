@@ -1,0 +1,40 @@
+name: Build release artifact
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Validate and package SmartBI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install exact dependencies
+        run: npm ci
+
+      - name: Audit production dependencies
+        run: npm audit --omit=dev
+
+      - name: Run quality checks and build
+        run: npm run quality
+        env:
+          VITE_BASE_PATH: /
+
+      - name: Upload immutable build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: smartbi-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SmartBI">
+  <defs>
+    <linearGradient id="smartbi-bg" x1="10" y1="8" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6C63FF"/>
+      <stop offset="1" stop-color="#29B6F6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#111827"/>
+  <rect x="8" y="8" width="48" height="48" rx="13" fill="url(#smartbi-bg)"/>
+  <path d="M19 43V29" stroke="white" stroke-width="5" stroke-linecap="round"/>
+  <path d="M31 43V21" stroke="white" stroke-width="5" stroke-linecap="round"/>
+  <path d="M43 43V34" stroke="white" stroke-width="5" stroke-linecap="round"/>
+  <path d="M17 47H47" stroke="white" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+</svg>
