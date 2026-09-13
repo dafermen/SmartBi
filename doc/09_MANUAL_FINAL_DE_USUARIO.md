@@ -20,6 +20,9 @@ inventados de una papelería**. No representan información de ninguna empresa.
 Las columnas de tu archivo pueden llamarse de otra manera: los controles serán
 los mismos, pero tú elegirás tus propios campos.
 
+Dentro de la aplicación puedes pulsar una imagen para abrirla en tamaño
+completo en otra pestaña y leer los controles con más comodidad.
+
 Tu Excel debe tener forma de tabla:
 
 - Una fila de encabezados.

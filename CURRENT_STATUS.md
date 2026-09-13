@@ -10,9 +10,9 @@ La aplicación importa archivos Excel `.xlsx` tabulares sin exigir una plantilla
 
 El proyecto continúa siendo 100 % frontend y local-first: no usa backend, base de datos, autenticación ni inteligencia artificial. La composición demo se guarda en `localStorage`.
 
-La publicación demo en `https://smartbi.innovalogic.tech` fue autorizada por
-el propietario el 2026-09-12, junto con la licencia MIT. En esta iteración se
-prepara el manual ilustrado y se verifican las condiciones de entrega.
+La demo está publicada en [smartbi.innovalogic.tech](https://smartbi.innovalogic.tech)
+con HTTPS y licencia MIT, según autorización del propietario del 2026-09-12.
+El manual ilustrado está integrado al sitio y el código está en `origin/main`.
 La aceptación humana formal continúa pendiente y no se declara WCAG completa.
 
 ## 2. Ubicación real
@@ -189,8 +189,6 @@ Resultados de preparación de entrega del 2026-09-12:
 - Seguro de despliegue ante cambios sin commit: verificado; el script se detuvo
   antes de conectarse al servidor.
 
-## 6. Pendientes reales antes de publicar v0.1.0
-
 ### Verificación de manual ilustrado y entrega demo (2026-09-12)
 
 - `npm run docs:screenshots`: diez capturas regeneradas con datos ficticios e inspeccionadas.
@@ -202,8 +200,21 @@ Resultados de preparación de entrega del 2026-09-12:
 - Instaladores Bash y PowerShell revisados; Bash con finales de línea LF.
 - Seguridad de entrega reforzada con SHA-256, bloqueo compartido de despliegue/rollback,
   assets anteriores conservados y comprobación de `/release.json`.
-- Publicación GitHub y activación HTTPS: siguiente paso autorizado; registrar
-  el resultado después de verificar el sitio real.
+- GitHub: primer commit completo `21f4635c1a14`, con CI aprobado.
+- Primera instalación: `20260912221637-21f4635c1a14`.
+- HTTP redirige a HTTPS con 308; HTTPS responde 200 y entrega CSP, HSTS,
+  nosniff, DENY, no-referrer, permisos restringidos, COOP y CORP.
+- Certificado de Let's Encrypt válido hasta 2026-12-12, con `certbot.timer`
+  activo y hook de recarga de Nginx configurado.
+- Caché de assets comprobada en un año; HTML con revalidación.
+- `/release.json` coincide con la versión instalada. El listado de rollback
+  funciona; no se simuló una reversión para no interrumpir la demo.
+- La primera ejecución pública pasó 17 de 18 recorridos: una recarga de Firefox
+  agotó su tiempo. Repetición específica con trazas: 3 de 3 aprobados.
+  Repetición completa posterior con trazas: 18 de 18 aprobados en el sitio HTTPS.
+  No se ha demostrado la causa exacta; se conserva como incidencia observada.
+
+## 6. Pendientes reales antes de publicar v0.1.0 formal
 
 ### Bloquean una declaración formal de aceptación
 
@@ -222,7 +233,8 @@ Resultados de preparación de entrega del 2026-09-12:
 4. Incorporar mutation testing y fuzzing sistemático de libros completos antes de un uso productivo serio.
 5. Incorporar una librería especializada de property-based testing si el proyecto supera el alcance demo.
 6. Evaluar la migración controlada a Vitest 5 para cerrar los avisos moderados exclusivos del entorno de pruebas.
-7. Ejecutar la primera publicación y verificar externamente TLS, headers y caché.
+7. Vigilar si se reproduce el timeout aislado de recarga en Firefox antes de
+   atribuirlo al navegador, la red o la aplicación.
 
 ## 7. Próximo paso recomendado
 
@@ -230,7 +242,8 @@ Resultados de preparación de entrega del 2026-09-12:
 2. Medir importación, memoria y experiencia con archivos grandes en varios equipos.
 3. Registrar hallazgos aquí.
 4. Corregir únicamente los bloqueos encontrados.
-5. Completar la publicación demo autorizada y comprobar GitHub, HTTPS y navegadores.
+5. Mantener el despliegue demo mediante el procedimiento verificado; no repetir
+   `deploy:bootstrap` en un sitio ya configurado.
 6. Crear la etiqueta Git `v0.1.0` solo después de la aceptación formal pendiente.
 
 ## 8. Comandos obligatorios antes de despliegue
@@ -257,3 +270,18 @@ Para levantar toda la aplicación local usar `npm run dev:5171`. SmartBI contin�
 
 Para producción, leer `docs/DEPLOYMENT.md`. No se utiliza Docker y no se debe
 publicar, ejecutar rollback ni tocar Nginx sin una solicitud explícita.
+
+## 10. Registro de entrega demo
+
+La primera publicación se realizó el 12 de septiembre de 2026, hora del equipo
+de desarrollo (13 de septiembre en UTC). Se utilizó Nginx directo, sin Docker,
+sin servicios Node.js en el servidor y sin copiar Excel privados ni credenciales.
+
+El [CI de la primera publicación](https://github.com/dafermen/SmartBi/actions/runs/34732616658)
+quedó aprobado. La versión vigente se consulta en
+[`release.json`](https://smartbi.innovalogic.tech/release.json); puede ser posterior
+a la primera versión al incorporar este registro documental.
+
+Nginx conserva dos advertencias previas sobre opciones de protocolo en otro
+sitio del servidor. Ya existían antes de SmartBI; `nginx -t` pasa. No se cambió
+la configuración de esa otra aplicación.

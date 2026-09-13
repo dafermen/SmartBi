@@ -137,7 +137,9 @@ export function DocumentationView({ initialPageId, onBack, onNavigate, theme, on
     img: ({ src, alt }) => {
       const imagePath = resolveDocumentationImage(typeof src === 'string' ? src : undefined, activePage.sourcePath);
       return imagePath
-        ? <img src={imagePath} alt={alt ?? ''} loading="lazy" decoding="async" />
+        ? <a href={imagePath} target="_blank" rel="noreferrer" title="Abrir captura en tamaño completo">
+            <img src={imagePath} alt={alt ?? ''} loading="lazy" decoding="async" />
+          </a>
         : <span>{alt || 'Imagen no disponible'}</span>;
     },
     a: ({ href, children }) => {

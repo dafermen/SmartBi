@@ -251,7 +251,7 @@ Objetivo: convertir el MVP avanzado en una primera entrega formal.
 7. [ ] Corregir bloqueos encontrados en aceptación.
 8. [ ] Confirmar Safari físico y lector de pantalla.
 9. [ ] Crear etiqueta Git `v0.1.0` después de aprobar todo.
-10. [ ] Publicar la versión en el hosting elegido.
+10. [x] Publicar la demo autorizada en el hosting elegido; aceptación formal pendiente.
 11. [x] Definir `smartbi.innovalogic.tech` y el servidor Nginx como destino.
 12. [x] Documentar primer despliegue, actualizaciones, verificación y rollback.
 13. [x] Preparar scripts locales que conservan la clave SSH fuera del repositorio.
@@ -259,7 +259,8 @@ Objetivo: convertir el MVP avanzado en una primera entrega formal.
 15. [x] Ilustrar el manual con diez capturas reales usando exclusivamente datos ficticios.
 16. [x] Integrar las imágenes al lector y añadir pruebas de rutas e imágenes responsive.
 17. [x] Añadir comprobaciones sobre el build de producción, no solo desarrollo.
-18. [ ] Registrar resultado de publicación demo, HTTPS y recorridos en el sitio real.
+18. [x] Registrar publicación demo, HTTPS y pruebas públicas en `CURRENT_STATUS.md`,
+    incluyendo la incidencia aislada de recarga observada en Firefox.
 
 Criterio de salida: aceptación firmada, validaciones verdes, limitaciones conocidas y versión etiquetada.
 

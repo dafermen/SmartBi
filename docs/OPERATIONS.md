@@ -19,13 +19,15 @@ Para una demo local:
 - Verificar que el dashboard responde a filtros.
 - Revisar consola del navegador si hay errores.
 
-Para el hosting público preparado en `smartbi.innovalogic.tech`:
+Para el hosting público activo en `smartbi.innovalogic.tech`:
 
 - Monitorear disponibilidad de la página.
 - Revisar errores JavaScript con herramienta compatible, cuidando no enviar datos sensibles.
 - Medir tiempos de carga de assets.
 - Revisar `/var/log/nginx/smartbi-error.log` cuando falle una solicitud.
 - Confirmar periódicamente que `certbot.timer` continúa activo.
+- Consultar `https://smartbi.innovalogic.tech/release.json` para identificar la
+  versión que sirve Nginx; contiene fecha de instalación y commit abreviado.
 
 ## Versión activa y rollback
 

@@ -15,6 +15,11 @@ debe revisar mediante un ADR nuevo.
 
 ## 2. Destino confirmado
 
+Estado: demo publicada con HTTPS el 2026-09-12 (2026-09-13 UTC). El detalle de
+validaciones y limitaciones está en [CURRENT_STATUS.md](../CURRENT_STATUS.md).
+El bootstrap ya fue ejecutado; las próximas entregas usan únicamente
+`npm run deploy:production`.
+
 | Elemento | Valor |
 |---|---|
 | Repositorio | `https://github.com/dafermen/SmartBi.git` |

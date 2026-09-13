@@ -33,6 +33,7 @@ test('el manual ilustrado carga sus imágenes sin desbordar la pantalla', async 
   for (const illustration of await illustrations.all()) {
     await illustration.scrollIntoViewIfNeeded();
     await expect(illustration).toHaveAttribute('alt', /\S/);
+    await expect(illustration.locator('..')).toHaveAttribute('target', '_blank');
     await expect.poll(() => illustration.evaluate((element) => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
   }
   const dimensions = await page.evaluate(() => ({

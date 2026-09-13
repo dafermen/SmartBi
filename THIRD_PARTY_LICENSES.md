@@ -28,6 +28,9 @@ Se incluyen también en `dist/THIRD_PARTY_NOTICES.txt` para acompañar la entreg
 web. El inventario incluye herramientas de build y no afirma que todos los
 paquetes se ejecuten en el navegador.
 
+La [licencia del propio SmartBI](public/LICENSE.txt) también se incluye como
+`dist/LICENSE.txt`, generada desde el archivo raíz `LICENSE`.
+
 Después de cambiar dependencias, ejecutar `npm ci`, `npm run licenses:generate`
 y revisar el resultado antes del commit. Este inventario no sustituye una
 revisión legal ni cambia las licencias originales.

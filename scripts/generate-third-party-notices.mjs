@@ -24,4 +24,6 @@ for (const [location, entry] of Object.entries(lock.packages).sort(([a], [b]) =>
   count += 1;
 }
 writeFileSync('public/THIRD_PARTY_NOTICES.txt', `${sections.join('\n').replace(/[ \t]+$/gm, '')}\n`, 'utf8');
+// La licencia del propio proyecto también acompaña al código compilado.
+writeFileSync('public/LICENSE.txt', readFileSync('LICENSE', 'utf8'), 'utf8');
 console.log(`Avisos conservados para ${count} paquetes de producción instalados.`);

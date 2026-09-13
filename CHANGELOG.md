@@ -8,6 +8,10 @@ Formato basado en Keep a Changelog.
 
 ### Agregado
 
+- Demo publicada con HTTPS en `smartbi.innovalogic.tech`; certificado y renovación configurados.
+- Imágenes del manual ampliables en una pestaña nueva.
+- Licencia MIT y avisos de terceros incluidos en los archivos estáticos publicados.
+
 - Manual ilustrado con diez capturas reales de datos ficticios y generación reproducible.
 - Imágenes locales seguras y adaptables dentro del lector documental.
 - Pruebas de imágenes en seis perfiles y E2E sobre el build de producción.
@@ -81,4 +85,4 @@ Formato basado en Keep a Changelog.
 - QA manual en Safari real.
 - Validación manual con NVDA o VoiceOver.
 - Ejecución y firma del checklist de aceptación final.
-- Etiqueta Git y despliegue formal.
+- Etiqueta Git de versión formal; la publicación demo ya está disponible.

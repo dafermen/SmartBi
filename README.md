@@ -41,7 +41,9 @@ npm run test:e2e
 
 ## Despliegue del MVP
 
-El destino preparado es `https://smartbi.innovalogic.tech`. SmartBI se sirve
+La demo está publicada en [smartbi.innovalogic.tech](https://smartbi.innovalogic.tech).
+El [manual ilustrado en línea](https://smartbi.innovalogic.tech/#/docs/manual-final)
+se puede leer sin cargar ningún Excel. SmartBI se sirve
 como aplicación estática mediante el Nginx existente; no necesita Docker ni un
 backend en ejecución.
 

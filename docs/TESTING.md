@@ -26,6 +26,12 @@ en el puerto exclusivo 4173. No reemplaza la aceptación manual.
 18 recorridos E2E, 36 documentos verificados, build correcto y 0
 vulnerabilidades en dependencias de producción.
 
+Verificación pública del 2026-09-12: 18/18 aprobados con trazas contra
+`https://smartbi.innovalogic.tech`. En el primer intento hubo un timeout aislado
+de recarga en Firefox (17/18); la repetición específica pasó 3/3 y la repetición
+completa pasó 18/18. La causa exacta no quedó demostrada; conservar este dato
+al evaluar la estabilidad, sin ocultarlo mediante reintentos automáticos.
+
 ## Pruebas obligatorias antes de desplegar
 
 ### 1. Pruebas de aceptación

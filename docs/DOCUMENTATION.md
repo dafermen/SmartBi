@@ -106,6 +106,9 @@ Solo admite capturas locales JPG, PNG y WebP de esa carpeta; no carga imágenes
 remotas de seguimiento. Las imágenes se cargan al acercarse a ellas y respetan
 el ancho disponible en móvil.
 
+Al pulsar una captura, se abre su tamaño completo en otra pestaña, sin perder
+la página del manual ni el informe que estaba cargado.
+
 Los tests E2E comprueban la carga de las diez imágenes, sus textos alternativos
 y la ausencia de desbordamiento horizontal en los seis perfiles de navegador.
 
