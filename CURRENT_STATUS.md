@@ -294,3 +294,7 @@ a la primera versión al incorporar este registro documental.
 Nginx conserva dos advertencias previas sobre opciones de protocolo en otro
 sitio del servidor. Ya existían antes de SmartBI; `nginx -t` pasa. No se cambió
 la configuración de esa otra aplicación.
+
+## DOC-STD-20261002 — Organización documental
+
+El mapa de fuentes oficiales y las reglas de mantenimiento se incorporaron a `docs/DOCUMENTATION.md`, ya integrado en la biblioteca. Se conservan rutas, idiomas, capturas y documentos históricos. Las comprobaciones de esta entrega se registran por separado; no modifica los pendientes de aceptación del producto.

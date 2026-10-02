@@ -142,3 +142,26 @@ La revisión manual mínima incluye:
 No se creó un segundo sitio ni se migró a VitePress, Docusaurus u otra herramienta. La solución React actual ya integra aprendizaje y producto, reutiliza la identidad visual y evita mantener dos builds.
 
 Una ruta física `/docs/` solo debe adoptarse si el alojamiento garantiza redirecciones de SPA o si se publica un sitio documental independiente. Hasta entonces, `/#/docs/...` es la alternativa más estable y portable.
+
+## DOC-STD-20261002 — Fuentes canónicas y mantenimiento
+
+Adopción del estándar documental v1.0 del catálogo de proyectos. Idioma principal: español. Perfil: web estática; el procesamiento del Excel ocurre en el navegador.
+
+| Necesidad | Fuente oficial |
+| --- | --- |
+| Probar y aprender | [Manual ilustrado](../doc/09_MANUAL_FINAL_DE_USUARIO.md) |
+| Conocer el estado y continuar | [Estado actual](../CURRENT_STATUS.md) |
+| Instalar y desarrollar | [Desarrollo](DEVELOPMENT.md) |
+| Comprender componentes y contratos | [Arquitectura](ARCHITECTURE.md) y [API interna](API.md) |
+| Verificar calidad y límites | [Pruebas](TESTING.md), [accesibilidad](ACCESSIBILITY.md) y [rendimiento](PERFORMANCE.md) |
+| Publicar y recuperar | [Despliegue](DEPLOYMENT.md) y [operación](OPERATIONS.md) |
+| Proteger los datos | [Seguridad](SECURITY.md) |
+| Resolver fallos | [Solución de problemas](TROUBLESHOOTING.md) |
+
+El estado vigente pertenece a CURRENT_STATUS; los informes de entrega y el changelog conservan historia. Los contratos de API son internos: no implican un servicio remoto. No se necesita un archivo de claves de backend para ejecutar SmartBI.
+
+Para una persona que evalúa el portafolio: abrir el manual, probar con datos sintéticos y consultar las limitaciones. Para desarrollar: leer desarrollo, arquitectura y pruebas. Para operar: usar despliegue y operación, conservando versiones anteriores.
+
+Al cambiar un comando, ruta, comportamiento o captura, actualizar su guía de origen y ejecutar las validaciones de este documento. Mantener la separación de doc/ y docs/ y los identificadores actuales de la biblioteca. No copiar el mismo procedimiento a varios documentos.
+
+La revisión documental no cierra la aceptación humana, accesibilidad, Safari físico ni la intermitencia de Firefox registradas en el estado actual. Cada validación debe indicar fecha, entorno y resultado; una compilación correcta no certifica esas pruebas manuales.
