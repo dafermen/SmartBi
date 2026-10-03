@@ -1,0 +1,46 @@
+/* InnovaLogic documentation v1. Scoped tokens leave product screens unchanged. */
+.innovalogic-docs {
+ --docs-accent: #2563eb; --docs-accent-strong: #1d4ed8; --docs-highlight: #0ea5e9;
+ --docs-bg: #f8fafc; --docs-surface: #ffffff; --docs-soft: #eef2f7; --docs-ink: #172033; --docs-muted: #526174; --docs-line: #dbe3ee; --docs-selected: #eaf1ff;
+ font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+ background: var(--docs-bg); color: var(--docs-ink);
+}
+.innovalogic-docs[data-docs-theme='dark'] {
+ --docs-accent: #93b8ff; --docs-accent-strong: #bed4ff; --docs-bg: #0b1220; --docs-surface: #101827; --docs-soft: #1b293c; --docs-ink: #edf3fc; --docs-muted: #bcc9db; --docs-line: #34445b; --docs-selected: #1c2e50;
+}
+.innovalogic-docs :is(a,button,summary,input,[tabindex]):focus-visible { outline: 3px solid var(--docs-accent); outline-offset: 3px; }
+.innovalogic-docs article { min-width: 0; width: 100%; max-width: 76ch; margin-inline: auto; line-height: 1.75; overflow-wrap: anywhere; }
+.innovalogic-docs article :is(h1,h2,h3,h4) { scroll-margin-top: 100px; }
+.innovalogic-docs .innova-code { min-width: 0; margin-block: 20px; }
+.innovalogic-docs .innova-code button { min-height: 44px; padding: 8px 14px; border: 1px solid var(--docs-line); border-radius: 8px; color: var(--docs-accent-strong); background: var(--docs-surface); cursor: pointer; font: inherit; }
+.innovalogic-docs .innova-code span[role='status'] { margin-left: 10px; font-size: 14px; }
+.innovalogic-docs .innova-code pre { margin-top: 4px; }
+.innovalogic-docs .innova-paths { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin: 20px 0; }
+.innovalogic-docs .innova-paths a { padding: 16px; border: 1px solid var(--docs-line); border-radius: 12px; color: var(--docs-accent-strong); background: var(--docs-surface); text-decoration: none; }
+.innovalogic-docs .innova-paths strong, .innovalogic-docs .innova-paths span { display: block; }
+.innovalogic-docs .innova-paths span { margin-top: 8px; color: var(--docs-muted); font-size: 14px; }
+.innovalogic-docs summary { min-height: 44px; cursor: pointer; }
+@media(max-width:700px) { .innovalogic-docs .innova-paths { grid-template-columns: 1fr; } }
+@media(prefers-reduced-motion:reduce) { .innovalogic-docs *, .innovalogic-docs *::before, .innovalogic-docs *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+
+.innovalogic-docs.docs-shell { background: var(--docs-bg); color: var(--docs-ink); }
+.innovalogic-docs .docs-topbar { border-top: 3px solid var(--docs-accent); background: var(--docs-surface); color: var(--docs-ink); }
+.innovalogic-docs .docs-topbar :is(button,.brand,.docs-topbar__title) { color: var(--docs-ink); }
+.innovalogic-docs :is(.docs-sidebar,.docs-reader,.docs-outline,.docs-toc,.docs-learning-card,.docs-concept-grid article,.docs-next>button,.docs-progress-card) { background: var(--docs-surface); border-color: var(--docs-line); color: var(--docs-ink); }
+.innovalogic-docs .docs-category summary { color: var(--docs-muted); font-size: 14px; font-weight: 700; padding: 10px 4px; }
+.innovalogic-docs .docs-category button.is-active { background: var(--docs-selected); color: var(--docs-accent-strong); }
+.innovalogic-docs .markdown-body { font-size: 16px; color: var(--docs-ink); }
+.innovalogic-docs .markdown-body :is(h1,h2,h3,strong) { color: var(--docs-ink); }
+.innovalogic-docs .markdown-body a { color: var(--docs-accent-strong); }
+.innovalogic-docs .docs-outline button { font-size: 13px; color: var(--docs-muted); }
+.innovalogic-docs .docs-category button { font-size: 14px; }
+.innovalogic-docs .docs-category small { font-size: 12px; }
+.innovalogic-docs .docs-search { min-height: 44px; background: var(--docs-surface); border-color: var(--docs-line); }
+.innovalogic-docs .docs-search input { color: var(--docs-ink); font-size: 14px; }
+.innovalogic-docs .docs-theme-button, .innovalogic-docs .docs-back-button { background: var(--docs-soft); border-color: var(--docs-line); min-height: 44px; }
+
+/* Verified contrast in both documentation themes. */
+
+.innovalogic-docs .docs-category :is(.docs-page-number,em) { color:var(--docs-muted); background:var(--docs-soft); font-size:11px; }
+.innovalogic-docs .docs-category small,.innovalogic-docs .docs-next small { color:var(--docs-muted); }
+.innovalogic-docs :is(.docs-reader__breadcrumb strong,.docs-toc summary,.docs-outline strong) { color:var(--docs-ink); }
