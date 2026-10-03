@@ -1,3 +1,5 @@
+import './innovalogic.css';
+import { DocumentationCode } from './DocumentationCode';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, ChevronRight, FileText, GraduationCap, Home, Menu, Moon, Search, Sun, X } from 'lucide-react';
 import ReactMarkdown, { type Components } from 'react-markdown';
@@ -96,10 +98,22 @@ export function DocumentationView({ initialPageId, onBack, onNavigate, theme, on
     setMobileIndexOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (headingId) {
+      window.history.replaceState(window.history.state, '', `#/docs/${encodeURIComponent(id)}#${encodeURIComponent(slugify(headingId))}`);
       window.setTimeout(() => document.getElementById(slugify(headingId))?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 0);
     }
   }, [onNavigate]);
-  const goToHeading = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const goToHeading = (id: string) => {
+    window.history.replaceState(window.history.state, '', `#/docs/${encodeURIComponent(activeId)}#${encodeURIComponent(id)}`);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  useEffect(() => {
+    const fragment = window.location.hash.split('#')[2];
+    if (!fragment) return;
+    let id = fragment;
+    try { id = decodeURIComponent(fragment); } catch { /* Preserve invalid text safely. */ }
+    const frame = requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: 'start' }));
+    return () => cancelAnimationFrame(frame);
+  }, [activeId]);
   const openSearch = () => {
     if (window.matchMedia('(max-width: 760px)').matches) setMobileIndexOpen(true);
     window.setTimeout(() => searchInputRef.current?.focus(), 0);
@@ -117,7 +131,7 @@ export function DocumentationView({ initialPageId, onBack, onNavigate, theme, on
   };
 
   useEffect(() => {
-    window.localStorage.setItem(DOCS_PROGRESS_STORAGE_KEY, JSON.stringify(completedPages));
+    try { window.localStorage.setItem(DOCS_PROGRESS_STORAGE_KEY, JSON.stringify(completedPages)); } catch { /* Reading remains available without persistent storage. */ }
   }, [completedPages]);
 
   useEffect(() => {
@@ -131,6 +145,7 @@ export function DocumentationView({ initialPageId, onBack, onNavigate, theme, on
   }, [closeMobileIndex, mobileIndexOpen]);
 
   const markdownComponents = useMemo<Components>(() => ({
+    pre: ({ children }) => <DocumentationCode>{children}</DocumentationCode>,
     h1: ({ children }) => <h1 id={slugify(childrenToText(children))}>{children}</h1>,
     h2: ({ children }) => <h2 id={slugify(childrenToText(children))}>{children}</h2>,
     h3: ({ children }) => <h3 id={slugify(childrenToText(children))}>{children}</h3>,
@@ -163,7 +178,7 @@ export function DocumentationView({ initialPageId, onBack, onNavigate, theme, on
   }), [activePage.sourcePath, selectPage]);
 
   return (
-    <div className="docs-shell">
+    <div className="docs-shell innovalogic-docs" data-docs-theme={theme}>
       <a className="skip-link" href="#documentation-content">Saltar al documento</a>
       <header className="docs-topbar">
         <button ref={mobileMenuRef} className="docs-mobile-menu" aria-label="Abrir índice" aria-expanded={mobileIndexOpen} onClick={() => setMobileIndexOpen(true)}><Menu /></button>
@@ -186,7 +201,7 @@ export function DocumentationView({ initialPageId, onBack, onNavigate, theme, on
           <div className="docs-sidebar__header"><div><span>BIBLIOTECA</span><strong>Documentación</strong></div><button ref={mobileCloseRef} aria-label="Cerrar índice" onClick={closeMobileIndex}><X /></button></div>
           <button className="docs-sidebar__back" onClick={onBack}><ArrowLeft size={16} />Volver a la aplicación</button>
           <label className="docs-search"><Search size={16} /><input ref={searchInputRef} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar en las guías…" aria-label="Buscar en la documentación" /></label>
-          <p className="docs-search-status" role="status" aria-live="polite">{query.trim() ? `${visiblePages.length} resultado${visiblePages.length === 1 ? '' : 's'}` : `${DOCUMENTATION_PAGES.length} capítulos en la biblioteca`}</p>
+          <p className="docs-search-status" role="status" aria-label="Resultados de búsqueda" aria-live="polite">{query.trim() ? `${visiblePages.length} resultado${visiblePages.length === 1 ? '' : 's'}` : `${DOCUMENTATION_PAGES.length} capítulos en la biblioteca`}</p>
           <div className="docs-progress-card">
             <span>Progreso de lectura</span>
             <strong>{completionPercent}%</strong>
@@ -195,8 +210,8 @@ export function DocumentationView({ initialPageId, onBack, onNavigate, theme, on
           </div>
           <nav className="docs-pages" aria-label="Capítulos por categoría">
             {groupedPages.map((group) => (
-              <section className="docs-category" key={group.category} aria-labelledby={`docs-category-${slugify(group.category)}`}>
-                <h2 id={`docs-category-${slugify(group.category)}`}>{group.category}</h2>
+              <details open className="docs-category" key={group.category} aria-labelledby={`docs-category-${slugify(group.category)}`}>
+                <summary id={`docs-category-${slugify(group.category)}`}>{group.category}</summary>
                 {group.pages.map((page) => (
                   <button key={page.id} className={page.id === activePage.id ? 'is-active' : ''} aria-current={page.id === activePage.id ? 'page' : undefined} onClick={() => selectPage(page.id)}>
                     <span className="docs-page-number">{page.number}</span>
@@ -204,13 +219,14 @@ export function DocumentationView({ initialPageId, onBack, onNavigate, theme, on
                     {completedPages.includes(page.id) ? <CheckCircle2 className="docs-page-check" size={16} /> : <ChevronRight size={16} />}
                   </button>
                 ))}
-              </section>
+              </details>
             ))}
             {visiblePages.length === 0 && <p className="docs-empty">No encontramos una guía con esas palabras.</p>}
           </nav>
           <div className="docs-sidebar__tip"><BookOpen /><p><strong>Consejo</strong>Lee una sección y prueba algo pequeño antes de continuar.</p></div>
         </aside>
         <main id="documentation-content" className="docs-reader" tabIndex={-1}>
+          {activeId === 'aprender' && <nav className="innova-paths" aria-label="Recorridos de lectura">{[['requerimientos','Conocer el producto','Propósito y funciones.'],['manual-final','Aprender a usarlo','Guía ilustrada paso a paso.'],['desarrollo-local','Explorar el desarrollo','Entorno, arquitectura y pruebas.']].map(([id,title,description]) => <a key={id} href={`#/docs/${id}`} onClick={event => { event.preventDefault(); selectPage(id); }}><strong>{title}</strong><span>{description}</span></a>)}</nav>}
           <div className="docs-reader__breadcrumb"><Home size={13} /><span>Documentación</span><ChevronRight size={13} /><span>{activePage.category}</span><ChevronRight size={13} /><strong>{activePage.title}</strong></div>
           <header className="docs-reader__intro">
             <span>{activePage.audience}</span><h1>{activePage.title}</h1><p>{activePage.description}</p>

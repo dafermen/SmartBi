@@ -1,5 +1,10 @@
 # CURRENT_STATUS.md — Estado actual de SmartBI
 
+## 2026-10-03 · Navegación documental local
+
+Biblioteca, búsqueda, categorías, índice, recorridos, fragmentos y copia de código. Preferencia visual con tolerancia al almacenamiento bloqueado. deploy:check completo: 51 pruebas y 18 E2E; navegador en 1440/390 px. Detalle: [navegación web](docs/WEB_NAVIGATION.md). Sin publicación ni despliegue; los hitos de producto conservan su estado.
+
+
 Última actualización: 2026-09-12.
 
 ## 1. Resumen ejecutivo

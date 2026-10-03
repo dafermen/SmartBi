@@ -15,7 +15,7 @@ test('abre un enlace documental, navega la biblioteca y vuelve a SmartBI', async
   if (await mobileMenu.isVisible()) await mobileMenu.click();
 
   await page.getByLabel('Buscar en la documentación').fill('endurecimiento pendiente');
-  await expect(page.getByRole('status')).toContainText(/resultado/i);
+  await expect(page.getByRole('status', { name: 'Resultados de búsqueda' })).toContainText(/resultado/i);
   await page.getByRole('button', { name: /Seguridad/i }).click();
   await expect(page.getByRole('heading', { level: 1, name: 'Seguridad' })).toBeVisible();
   await expect(page).toHaveURL(/#\/docs\/seguridad$/);
